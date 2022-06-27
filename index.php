@@ -22,11 +22,22 @@ $movies = [
     <h1>Movies</h1>
     <ul>
         <?php foreach($movies as $movie) { ?>
-            <h3> <?= $movie->title ?> </h3>
-            <span> <?= "{$movie->year}: {$movie->getOld()}" ?> </span>
-            <h6> <?= $movie->director ?> </h6>
-            <h4> <?= $movie->getCast() ?> </h4> <!--can't print array-->
-            <?php } ?>
+            <li>
+                <h3> <?= "title: {$movie->title}" ?> </h3>
+                <p> <?= "production year: {$movie->year} so {$movie->getOld()}" ?> </p>
+                <h4> <?= "director: {$movie->director}" ?> </h4>
+                <h4> cast:
+                    <?php foreach($movie->MainCast as $elm) { ?>
+                    <?= $elm ?>
+                    <?php } ?>
+                </h4>
+                <h5> genre:
+                    <?php foreach($movie->genre as $elm) { ?>
+                        <?= $elm ?>
+                    <?php } ?>
+                </h5>
+            </li>
+        <?php } ?>
     </ul>
 </body>
 </html>

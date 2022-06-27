@@ -16,14 +16,7 @@ class Movie {
         $this->director = $_director;
         $this->genre = $_genre;
     }
-
     //Define at least one method in class
-    public function getCast() { //BUG
-        foreach($this->MainCast as $elm) {
-            return $elm;
-        }
-    }
-
     public function getOld() {
         if($this->year < 2009) {
             return "You may have seen {$this->title} in VHS";

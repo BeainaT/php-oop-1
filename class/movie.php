@@ -23,4 +23,11 @@ class Movie {
         }
         return "No VHS for {$this->title}";
     }
+    public function getGenres() {
+        $results= "";
+        foreach($this->genre as $elm) {
+            $results .= "{$elm} ";
+        }
+        return $results;
+    }
 }

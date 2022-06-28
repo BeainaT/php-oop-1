@@ -8,6 +8,15 @@ $movies = [
     new Movie ('Doctor Strange in the Multiverse of Madness', 2022, 'Sam Raimi', ['Benedict Cumberbatch', 'Elizabeth Olsen', 'Chiwetel Ejiofor', 'Benedict Wong', 'Xochitl Gomez'], ['Fantasy', 'Action', 'Horror']),
     new Movie('The Devil Wears Prada', 2006, 'David Frankel', ['Meryl Streep', 'Anne Hathaway', 'Stanley Tucci', 'Adrian Grenier', 'Emily Blunt'], ['Drama', 'Commedy'])
 ];
+$popular = [];
+foreach($movies as $movie) {
+    foreach($movie->MainCast as $elm) {
+        $popular[] = $elm;
+    }
+}
+foreach(array_count_values($popular) as $key => $elm) {
+   !($elm > 1) ?: $popular = $key;
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +41,12 @@ $movies = [
                     <?php } ?>
                 </h4>
                 <h5> genre:
-                    <?php foreach($movie->genre as $elm) { ?>
-                        <?= $elm ?>
-                    <?php } ?>
+                    <?= $movie->getGenres() ?>
                 </h5>
             </li>
-        <?php } ?>
+            <?php } ?>
+            <hr>
+        <p><?= "The most popular actor on this movies list is <strong>{$popular}</strong>" ?></p>
     </ul>
 </body>
 </html>
